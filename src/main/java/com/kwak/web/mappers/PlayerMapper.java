@@ -1,8 +1,11 @@
 package com.kwak.web.mappers;
 
-import org.springframework.stereotype.Component;
+import com.kwak.web.domains.PlayerDTO;
 import org.springframework.stereotype.Repository;
-@Component
+
+import java.util.List;
+
 @Repository
 public interface PlayerMapper {
+    public List<PlayerDTO> selectAll();
 }
