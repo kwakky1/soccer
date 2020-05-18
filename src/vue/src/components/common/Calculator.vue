@@ -38,7 +38,7 @@ data(){
 },
 methods:{
     clear(){
-        this.current =''
+        this.current=''
     },
     setPrevious(){
         this.previous = this.current
@@ -46,10 +46,14 @@ methods:{
     },
     append(number){
         if(this.operatorClicked){
-            this.current = ''
+            this.current=''
             this.operatorClicked = false
         }
-        this.current= `${this.current}${number}`
+        this.current = `${this.current}${number}`
+    },
+    equal(){
+      this.current=`${this.operator(parseFloat(this.previous),parseFloat(this.current))}`
+      this.previous = null
     },
     add(){
         this.operator = (a,b) => a+b
@@ -66,10 +70,6 @@ methods:{
     divide(){
         this.operator = (a,b) => a/b
         this.setPrevious()
-    },
-    equal(){
-        this.current =`${this.operator(parseFloat(this.previous),parseFloat(this.current))}`
-        this.previous =null
     }
 }
 }
