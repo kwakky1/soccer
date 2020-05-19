@@ -3,7 +3,7 @@
         <div>카운터 : {{count}}</div>
         <button @click="increment">+</button>
         <br>
-        <button @click="decrement"></button>
+        <button @click="decrement">-</button>
         <br>
             <button @click="incrementIfOdd">Increment If Odd</button>>
         <br>

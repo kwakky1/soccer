@@ -1,13 +1,152 @@
 <template>
-    <h1>회원가입</h1>
+    <div>
+        <form method="post">
+        <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" v-model="userid" placeholder="Enter Username" name="userid" required>
+                <h3>입력한 아이디: {{userid}}</h3>
+                <br>
+                <label><b>Password</b></label>
+                <input type="password" v-model="password" placeholder="Enter Password" name="password" required>
+                <h3>입력한 비밀번호: {{password}}</h3>
+                <br>
+                <div id='example-3'> 취미
+                    <input type="checkbox" id="jack" value="Java" v-model="checkedNames">
+                    <label for="jack">Java</label>
+                    <input type="checkbox" id="john" value="Javascript" v-model="checkedNames">
+                    <label for="john">Javascript</label>
+                    <input type="checkbox" id="mike" value="SQL" v-model="checkedNames">
+                    <label for="mike">SQL</label>
+                    <br>
+                    <span>체크한 이름: {{ checkedNames }}</span>
+                </div>>
+                <br>
+                    <textarea v-model="gita" placeholder="여러줄을 입력해보세요"></textarea><br>
+                    <span>입력내용</span>
+                    <p style="white-space: pre-line">{{ gita }}</p>
+                    <br>
+                    <br>
+                성별 :
+                <input type="radio" id="one" value="male" v-model="gender">
+                <label for="one">남성</label>
+                <input type="radio" id="two" value="female" v-model="gender">
+                <label for="two">여성</label>
+                <br>
+                <span>성별: {{gender}}</span>
+                <br>
+                <select v-model="telecom" multiple> 통신사
+                    <option disabled value="">Please select one</option>
+                    <option>SKT</option>
+                    <option>KT</option>
+                    <option>LGU</option>
+                </select>
+                <br>
+                <span>통신사: {{ telecom }}</span>
+                <br>
+                개인정보동의
+                <input
+                        type="checkbox"
+                        v-model="confirm"
+                        true-value="동의합니다."
+                        false-value="동의 안함"
+                >
+                    <span>Selected: {{confirm}}</span>
+
+
+                <button @click="join" type="submit">회원가입</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                </label>
+        </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" class="cancelbtn">Cancel</button>
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script>
-    export default {
-        name: "Join"
-    }
+import {mapActions} from 'vuex'
+export default {
+    data(){
+        return {
+            usreid:'',
+            password:'',
+            checkedNames:[],
+            gita:'',
+            gender:'',
+            telecom:'',
+            confirm: ''
+
+        }
+    },
+    methods: mapActions([
+        'join'
+    ])
+}
 </script>
 
 <style scoped>
+    form {border: 3px solid #f1f1f1;}
 
+    input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    button:hover {
+        opacity: 0.8;
+    }
+
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+
+    .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+    }
+
+    img.avatar {
+        width: 40%;
+        border-radius: 50%;
+    }
+
+    .container {
+        padding: 16px;
+    }
+
+    span.psw {
+        float: right;
+        padding-top: 16px;
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+        span.psw {
+            display: block;
+            float: none;
+        }
+        .cancelbtn {
+            width: 100%;
+        }
+    }
 </style>
