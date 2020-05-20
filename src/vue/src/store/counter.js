@@ -40,7 +40,7 @@ const getters ={
 
 
 export default {
-    name:'counter',
+    name :'counter',
     namespace : true,
     state,
     actions,

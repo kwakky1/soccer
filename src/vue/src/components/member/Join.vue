@@ -72,7 +72,7 @@ import {mapActions} from 'vuex'
 export default {
     data(){
         return {
-            usreid:'',
+            userid:'',
             password:'',
             checkedNames:[],
             gita:'',

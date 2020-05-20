@@ -9,7 +9,7 @@
 
         <div class="container">
             <label><b>Username</b></label>
-            <input type="text" @keyup.enter="moveToPasswd" v-model="userid" placeholder="Enter Username" name="userid" required>
+            <input type="text" @keyup.enter="moveToPasswd" v-model="userid" placeholder="Enter Username" required>
             <h3>입력한 아이디: {{userid}}</h3>
 
             <label><b>Password</b></label>
@@ -35,22 +35,20 @@
 export default {
     data(){
         return{
-            userid :'',
+            userid :'',  //properties
             password : ''
 
         }
     },
     methods: {
         login(){
-            alert('무브무브')
-
+            this.$store.dispatch('player/login',{playerId:this.userid, backNo:this.password})
         },
         moveToPasswd(){
             document.getElementById('passwd').focus()
 
         }
     }
-
 }
 
 </script>
