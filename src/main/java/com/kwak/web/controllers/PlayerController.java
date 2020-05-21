@@ -6,8 +6,11 @@ import com.kwak.web.services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
-@CrossOrigin(origins="http://localhost:8080",allowedHeaders = "*")
+import java.util.Map;
+
+@CrossOrigin(origins="*",allowedHeaders = "*")
 @RestController
 @RequestMapping("/players")
 public class PlayerController {
@@ -18,11 +21,18 @@ public class PlayerController {
         return playerService.retriveAll();
     }
     @PostMapping("/{playerId}/access")
-    public PlayerDTO login(
+    public Map<String,Object> login(
             @PathVariable String playerId,
             @RequestBody PlayerDTO params){
-        System.out.println("뷰와 연결이 성공!! "+ playerId );
-        System.out.println("뷰와 연결이 성공!! "+ params.getBackNo());
-        return player;
+        Map<String,Object> map = new HashMap<>();
+        player = playerService.login(params);
+        if(player != null){
+            System.out.println("로그인정보" + player.toString());
+            map.put("result",true);
+        } else {
+            map.put("result",false);
+        }
+        map.put("player", player);
+        return map;
     }
 }

@@ -31,8 +31,15 @@
 </template>
 
 <script>
-
+import {mapState} from 'vuex'
 export default {
+    computed : {
+        ...mapState(
+            {fail: state => state.player.fail,
+            auth : state => state.player.auth
+            }
+        )
+    },
     data(){
         return{
             userid :'',  //properties
@@ -42,7 +49,7 @@ export default {
     },
     methods: {
         login(){
-            this.$store.dispatch('player/login',{playerId:this.userid, backNo:this.password})
+            this.$store.dispatch('player/login',{playerId:'2000003', backNo:'40'})
         },
         moveToPasswd(){
             document.getElementById('passwd').focus()

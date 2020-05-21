@@ -15,5 +15,34 @@
           team_id teamId
         from player
     </select>
-
+    <select id="selectOne" resultType="com.kwak.web.domains.PlayerDTO"
+            parameterType="string">
+        select
+        player_id playerId,
+         player_name playerName,
+          e_player_name ePlayerName, nickname,
+          join_yyyy joinYYYY,
+          position,
+          back_no backNo,
+          nation,
+          birth_date birthDate,solar,height,weight,
+          team_id teamId
+        from player
+        where player_id like #{value}
+    </select>
+    <select id="login" resultType="com.kwak.web.domains.PlayerDTO"
+                        parameterType="com.kwak.web.domains.PlayerDTO">
+        select
+        player_id playerId,
+         player_name playerName,
+          e_player_name ePlayerName, nickname,
+          join_yyyy joinYYYY,
+          position,
+          back_no backNo,
+          nation,
+          birth_date birthDate,solar,height,weight,
+          team_id teamId
+        from player
+        where player_id like #{playerId} and back_no like #{backNo}
+    </select>
 </mapper>
